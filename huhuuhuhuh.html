@@ -24,6 +24,25 @@
         align-items: stretch;
         width: 95%;
         max-width: 1400px;
+        /* allow wrapping on very small screens */
+        flex-wrap: wrap;
+    }
+
+    /* make assigner take ~60% and timer ~40% of the container */
+    .assigner {
+        flex: 0 0 60%;
+        box-sizing: border-box;
+    }
+    .timer {
+        flex: 0 0 40%;
+        box-sizing: border-box;
+    }
+
+    /* responsive: stack on narrow viewports */
+    @media (max-width: 800px) {
+        .assigner, .timer {
+            flex: 1 1 100%;
+        }
     }
 
     .box {
@@ -155,7 +174,7 @@
     .timer-set input {
         width: 60px;
         text-align: center;
-        padding: 5px;ds
+        padding: 5px;
         border-radius: 5px;
         border: 1px solid #555;
     }
@@ -179,7 +198,7 @@
 <body>
 <div class="container">
     <!-- IMPROMPTU SPEECH TOPIC ASSIGNER -->
-    <div class="box">
+    <div class="box assigner">
         <div id="main-content">
             <h1>IMPROMPTU SPEECH TOPIC ASSIGNER</h1>
             <p>Click the button to get a random topic for your speech!</p>
@@ -203,7 +222,7 @@
     </div>
 
     <!-- Speech Timer -->
-    <div class="box">
+    <div class="box timer">
         <h2>Speech Timer</h2>
         <div class="timer-set">
             <label>Min:</label>
@@ -211,6 +230,7 @@
             <label>Sec:</label>
             <input type="number" id="timer-seconds" min="0" max="59" value="0">
             <button id="set-timer">⏱️Set</button>
+        </div> <!-- closed timer-set div -->
         <div id="timer-display">02:00</div>
         <div class="timer-buttons">
             <button id="start-timer">▶️Start</button>
