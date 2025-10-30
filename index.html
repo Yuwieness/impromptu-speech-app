@@ -23,8 +23,8 @@
         align-items: stretch;
         width: 95%;
         max-width: 1400px;
-        height: 85vh; /* reduced total height */
-        gap: 20px;
+        height: auto; /* Changed from 85vh to auto to adjust height based on content */
+        gap: 20px; /* Added gap for little space between the boxes */
     }
 
     /* wider assigner box */
@@ -46,8 +46,8 @@
         padding: 20px 25px;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
-        height: 100%;
+        justify-content: center; /* Changed from flex-start to center to center content inside the box */
+        height: auto; /* Changed from 100% to auto to adjust height based on content */
         overflow-y: auto;
     }
 
@@ -62,42 +62,44 @@
         margin-bottom: 10px;
         font-weight: bold;
         text-transform: uppercase;
+        font-size: 2em; /* Increased font size */
     }
 
     p {
         text-align: center;
-        font-size: 1.1em;
+        font-size: 1.5em; /* Increased font size */
         color: #333;
         margin-bottom: 10px;
     }
 
     #topic-display {
-        font-size: 1.5em;
+        font-size: 2em; /* Increased font size */
         text-align: center;
         background: #fff;
-        padding: 15px;
+        padding: 20px; /* Increased padding */
         border-radius: 10px;
         margin: 15px 0;
         border: 2px solid #ccc;
-        min-height: 70px;
+        min-height: 80px; /* Increased min-height */
     }
 
     .button-group {
         display: flex;
         justify-content: center;
-        gap: 10px;
+        gap: 15px; /* Increased gap */
         flex-wrap: wrap;
-        margin-top: 5px;
+        margin-top: 10px; /* Increased margin */
     }
 
     button {
-        padding: 10px 22px;
-        font-size: 1em;
+        padding: 15px 30px; /* Increased padding */
+        font-size: 1.2em; /* Increased font size */
         border: none;
         border-radius: 8px;
         color: white;
         cursor: pointer;
         transition: 0.3s;
+        text-align: center; /* Ensure text is centered */
     }
 
     #assign-button { background-color: #007bff; }
@@ -116,9 +118,9 @@
     }
 
     #add-topic {
-        width: 70%;
-        padding: 8px;
-        font-size: 1em;
+        width: 80%; /* Increased width */
+        padding: 12px; /* Increased padding */
+        font-size: 1.2em; /* Increased font size */
         margin-right: 8px;
         border-radius: 5px;
         border: 1px solid #ccc;
@@ -126,30 +128,33 @@
 
     #add-button {
         background-color: #007bff;
+        padding: 12px 20px; /* Increased padding */
+        font-size: 1.2em; /* Increased font size */
     }
 
     ul {
         list-style: none;
         padding: 0;
         margin-top: 10px;
-        max-height: 180px;
+        max-height: 200px; /* Increased max-height */
         overflow-y: auto;
     }
 
     .topic-item {
         background: #fff;
         border-radius: 5px;
-        padding: 6px 8px;
-        margin-bottom: 6px;
+        padding: 10px 12px; /* Increased padding */
+        margin-bottom: 8px; /* Increased margin */
         display: flex;
         justify-content: space-between;
         align-items: center;
         border: 1px solid #ddd;
+        font-size: 1.1em; /* Increased font size */
     }
 
     .topic-item button {
-        padding: 4px 8px;
-        font-size: 0.9em;
+        padding: 6px 10px; /* Increased padding */
+        font-size: 1em; /* Increased font size */
         border-radius: 5px;
     }
 
@@ -160,6 +165,8 @@
         background-color: #6c757d;
         align-self: center;
         margin-top: 15px;
+        padding: 12px 20px; /* Increased padding */
+        font-size: 1.2em; /* Increased font size */
     }
     #close-admin:hover { background-color: #555; }
 
@@ -168,38 +175,43 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 8px;
+        gap: 10px; /* Increased gap */
         flex-wrap: wrap;
-        margin-bottom: 10px; /* reduced space */
+        margin-bottom: 15px; /* Increased margin */
     }
 
     .timer-set label {
         font-weight: 600;
+        font-size: 1.2em; /* Increased font size */
     }
 
     .timer-set input {
-        width: 55px;
-        text-align: center;
-        padding: 4px;
+        width: 70px; /* Increased width */
+        text-align: center; /* Ensure numbers are centered */
+        padding: 8px; /* Increased padding */
         border-radius: 5px;
         border: 1px solid #555;
-        height: 35px;
+        height: 45px; /* Increased height */
+        font-size: 1.2em; /* Increased font size */
     }
 
     #set-timer {
         background-color: #007bff;
-        height: 35px;
+        height: 45px; /* Increased height */
+        padding: 0 15px; /* Adjusted padding for centering */
+        font-size: 1.2em; /* Increased font size */
+        text-align: center; /* Ensure "Set" is centered */
     }
 
     #timer-display {
         text-align: center;
-        font-size: 2.5em;
+        font-size: 3em; /* Increased font size */
         font-weight: bold;
         color: #000;
-        margin-bottom: 15px; /* reduced spacing below display */
+        margin-bottom: 20px; /* Increased margin */
         box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
         border-radius: 10px;
-        padding: 8px;
+        padding: 10px; /* Increased padding */
     }
 
     #start-timer { background-color: #28a745; }
