@@ -23,7 +23,7 @@
         align-items: stretch;
         width: 95%;
         max-width: 1400px;
-        height: 90vh; /* ensures both boxes fit on screen */
+        height: 85vh; /* reduced total height */
         gap: 20px;
     }
 
@@ -43,15 +43,14 @@
         background-color: #ffffff;
         border-radius: 20px;
         box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
-        padding: 30px;
+        padding: 20px 25px;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: flex-start;
         height: 100%;
         overflow-y: auto;
     }
 
-    /* Scrollbars hidden but scrollable if needed */
     .box::-webkit-scrollbar {
         width: 0;
         background: transparent;
@@ -60,7 +59,7 @@
     h1, h2 {
         color: #000;
         text-align: center;
-        margin-bottom: 15px;
+        margin-bottom: 10px;
         font-weight: bold;
         text-transform: uppercase;
     }
@@ -69,30 +68,31 @@
         text-align: center;
         font-size: 1.1em;
         color: #333;
+        margin-bottom: 10px;
     }
 
     #topic-display {
-        font-size: 1.6em;
+        font-size: 1.5em;
         text-align: center;
         background: #fff;
-        padding: 20px;
+        padding: 15px;
         border-radius: 10px;
-        margin: 20px 0;
+        margin: 15px 0;
         border: 2px solid #ccc;
-        min-height: 80px;
+        min-height: 70px;
     }
 
     .button-group {
         display: flex;
         justify-content: center;
-        gap: 15px;
+        gap: 10px;
         flex-wrap: wrap;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
     button {
-        padding: 12px 25px;
-        font-size: 1.1em;
+        padding: 10px 22px;
+        font-size: 1em;
         border: none;
         border-radius: 8px;
         color: white;
@@ -112,14 +112,14 @@
     #admin-panel {
         display: none;
         flex-direction: column;
-        margin-top: 20px;
+        margin-top: 15px;
     }
 
     #add-topic {
         width: 70%;
-        padding: 10px;
+        padding: 8px;
         font-size: 1em;
-        margin-right: 10px;
+        margin-right: 8px;
         border-radius: 5px;
         border: 1px solid #ccc;
     }
@@ -131,16 +131,16 @@
     ul {
         list-style: none;
         padding: 0;
-        margin-top: 15px;
-        max-height: 200px;
+        margin-top: 10px;
+        max-height: 180px;
         overflow-y: auto;
     }
 
     .topic-item {
         background: #fff;
         border-radius: 5px;
-        padding: 8px 10px;
-        margin-bottom: 8px;
+        padding: 6px 8px;
+        margin-bottom: 6px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -148,7 +148,7 @@
     }
 
     .topic-item button {
-        padding: 5px 10px;
+        padding: 4px 8px;
         font-size: 0.9em;
         border-radius: 5px;
     }
@@ -159,62 +159,58 @@
     #close-admin {
         background-color: #6c757d;
         align-self: center;
-        margin-top: 20px;
+        margin-top: 15px;
     }
-    #close-admin:hover {
-        background-color: #555;
-    }
+    #close-admin:hover { background-color: #555; }
 
     /* TIMER SECTION */
     .timer-set, .timer-buttons {
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
-        margin-bottom: 15px;
+        margin-bottom: 10px; /* reduced space */
+    }
+
+    .timer-set label {
+        font-weight: 600;
     }
 
     .timer-set input {
-        width: 60px;
+        width: 55px;
         text-align: center;
-        padding: 5px;
+        padding: 4px;
         border-radius: 5px;
         border: 1px solid #555;
-        height: 40px;
+        height: 35px;
     }
 
     #set-timer {
         background-color: #007bff;
-        height: 40px;
+        height: 35px;
     }
 
     #timer-display {
         text-align: center;
-        font-size: 3em;
+        font-size: 2.5em;
         font-weight: bold;
         color: #000;
-        margin-bottom: 20px;
+        margin-bottom: 15px; /* reduced spacing below display */
         box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
         border-radius: 10px;
-        padding: 10px;
+        padding: 8px;
     }
 
     #start-timer { background-color: #28a745; }
     #pause-timer { background-color: #ffc107; color: #000; }
     #reset-timer { background-color: #dc3545; }
 
-    /* RESPONSIVE FIX for tablets and smaller screens */
+    /* RESPONSIVE FIX for tablets */
     @media (max-width: 1100px) {
         body { overflow-y: auto; height: auto; }
-        .container {
-            flex-direction: column;
-            height: auto;
-        }
-        .assigner, .timer {
-            flex: 1 1 100%;
-            height: auto;
-        }
+        .container { flex-direction: column; height: auto; }
+        .assigner, .timer { flex: 1 1 100%; height: auto; }
     }
 </style>
 </head>
@@ -254,7 +250,7 @@
             <input type="number" id="timer-seconds" min="0" max="59" value="0">
             <button id="set-timer">⏱️Set</button>
         </div>
-        <div id="timer-display">02:00</div>
+        <div id="timer-display">00:00</div>
         <div class="timer-buttons">
             <button id="start-timer">▶️Start</button>
             <button id="pause-timer">⏸️Pause</button>
@@ -264,7 +260,6 @@
 </div>
 
 <script>
-/* Original full JavaScript functionality — unchanged */
 let topics = JSON.parse(localStorage.getItem('speechTopics')) || [
     "The danger of staying in your comfort zone",
     "Social media: connection or illusion of connection?",
