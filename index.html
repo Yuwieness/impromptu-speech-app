@@ -8,45 +8,67 @@
     body {
         font-family: "Segoe UI", Arial, sans-serif;
         margin: 0;
-        padding: 30px;
-        background-color: #f2f6fc;
+        padding: 0;
+        background-color: #ffffff;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-        gap: 30px;
+        overflow: hidden;
     }
 
     .container {
         display: flex;
-        gap: 30px;
-        justify-content: center;
+        justify-content: space-between;
         align-items: stretch;
         width: 95%;
         max-width: 1400px;
+        height: 90vh; /* ensures both boxes fit on screen */
+        gap: 20px;
+    }
+
+    /* wider assigner box */
+    .assigner {
+        flex: 0 0 65%;
+        box-sizing: border-box;
+    }
+
+    /* smaller timer box */
+    .timer {
+        flex: 0 0 35%;
+        box-sizing: border-box;
     }
 
     .box {
         background-color: #ffffff;
-        border-radius: 15px;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+        border-radius: 20px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
         padding: 30px;
-        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    /* Scrollbars hidden but scrollable if needed */
+    .box::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
     }
 
     h1, h2 {
         color: #000;
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
     }
 
     p {
         text-align: center;
-        font-size: 1.2em;
-        color: #333333;
+        font-size: 1.1em;
+        color: #333;
     }
 
     #topic-display {
@@ -152,13 +174,21 @@
         flex-wrap: wrap;
         margin-bottom: 15px;
     }
+
     .timer-set input {
         width: 60px;
         text-align: center;
         padding: 5px;
         border-radius: 5px;
         border: 1px solid #555;
+        height: 40px;
     }
+
+    #set-timer {
+        background-color: #007bff;
+        height: 40px;
+    }
+
     #timer-display {
         text-align: center;
         font-size: 3em;
@@ -166,20 +196,32 @@
         color: #000;
         margin-bottom: 20px;
         box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+        border-radius: 10px;
+        padding: 10px;
     }
 
-    #set-timer {background-color: #007bff;}
     #start-timer { background-color: #28a745; }
     #pause-timer { background-color: #ffc107; color: #000; }
     #reset-timer { background-color: #dc3545; }
-  
 
+    /* RESPONSIVE FIX for tablets and smaller screens */
+    @media (max-width: 1100px) {
+        body { overflow-y: auto; height: auto; }
+        .container {
+            flex-direction: column;
+            height: auto;
+        }
+        .assigner, .timer {
+            flex: 1 1 100%;
+            height: auto;
+        }
+    }
 </style>
 </head>
 <body>
 <div class="container">
     <!-- IMPROMPTU SPEECH TOPIC ASSIGNER -->
-    <div class="box">
+    <div class="box assigner">
         <div id="main-content">
             <h1>IMPROMPTU SPEECH TOPIC ASSIGNER</h1>
             <p>Click the button to get a random topic for your speech!</p>
@@ -202,15 +244,16 @@
         </div>
     </div>
 
-    <!-- Speech Timer -->
-    <div class="box">
-        <h2>Speech Timer</h2>
+    <!-- SPEECH TIMER -->
+    <div class="box timer">
+        <h2>SPEECH TIMER</h2>
         <div class="timer-set">
             <label>Min:</label>
             <input type="number" id="timer-minutes" min="0" max="59" value="2">
             <label>Sec:</label>
             <input type="number" id="timer-seconds" min="0" max="59" value="0">
             <button id="set-timer">⏱️Set</button>
+        </div>
         <div id="timer-display">02:00</div>
         <div class="timer-buttons">
             <button id="start-timer">▶️Start</button>
@@ -221,6 +264,7 @@
 </div>
 
 <script>
+/* Original full JavaScript functionality — unchanged */
 let topics = JSON.parse(localStorage.getItem('speechTopics')) || [
     "The danger of staying in your comfort zone",
     "Social media: connection or illusion of connection?",
@@ -242,7 +286,6 @@ const addButton = document.getElementById('add-button');
 const topicList = document.getElementById('topic-list');
 const topicDisplay = document.getElementById('topic-display');
 
-// Toggle Admin Panel
 adminToggle.addEventListener('click', () => {
     mainContent.style.display = 'none';
     adminPanel.style.display = 'flex';
@@ -253,7 +296,6 @@ closeAdmin.addEventListener('click', () => {
     mainContent.style.display = 'block';
 });
 
-// Add topic
 addButton.addEventListener('click', () => {
     const newTopic = addTopicInput.value.trim();
     if (newTopic) {
@@ -301,7 +343,6 @@ function saveTopics() {
     availableTopics = [...topics];
 }
 
-// Assign Topic
 assignButton.addEventListener('click', () => {
     if (availableTopics.length === 0) {
         topicDisplay.textContent = "All topics have been assigned! Click Reset to start over.";
@@ -317,7 +358,6 @@ resetButton.addEventListener('click', () => {
     topicDisplay.textContent = "Topics reset! Click Assign to get a new one.";
 });
 
-// Timer Logic
 let timerInterval;
 let timeLeft = 120;
 const timerDisplay = document.getElementById('timer-display');
