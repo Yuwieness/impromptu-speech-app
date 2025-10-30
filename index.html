@@ -19,12 +19,12 @@
 
     .container {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around; /* Ensures equal margins on left of assigner and right of timer */
         align-items: stretch;
         width: 95%;
         max-width: 1400px;
-        height: auto; /* Changed from 85vh to auto to adjust height based on content */
-        gap: 20px; /* Added gap for little space between the boxes */
+        height: auto; /* Adjusts height based on content */
+        gap: 20px; /* Added back gap for space between boxes */
     }
 
     /* wider assigner box */
@@ -46,8 +46,8 @@
         padding: 20px 25px;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Changed from flex-start to center to center content inside the box */
-        height: auto; /* Changed from 100% to auto to adjust height based on content */
+        justify-content: center; /* Centers content inside the box */
+        height: auto; /* Adjusts height based on content */
         overflow-y: auto;
     }
 
@@ -62,44 +62,47 @@
         margin-bottom: 10px;
         font-weight: bold;
         text-transform: uppercase;
-        font-size: 2em; /* Increased font size */
+    }
+
+    h1 {
+        font-size: 2em; /* Reduced font size to fit the title on one line within the box */
+        white-space: nowrap; /* Ensures the title stays on one line */
     }
 
     p {
         text-align: center;
-        font-size: 1.5em; /* Increased font size */
+        font-size: 1.1em;
         color: #333;
         margin-bottom: 10px;
     }
 
     #topic-display {
-        font-size: 2em; /* Increased font size */
+        font-size: 1.5em;
         text-align: center;
         background: #fff;
-        padding: 20px; /* Increased padding */
+        padding: 15px;
         border-radius: 10px;
         margin: 15px 0;
         border: 2px solid #ccc;
-        min-height: 80px; /* Increased min-height */
+        min-height: 70px;
     }
 
     .button-group {
         display: flex;
         justify-content: center;
-        gap: 15px; /* Increased gap */
+        gap: 10px;
         flex-wrap: wrap;
-        margin-top: 10px; /* Increased margin */
+        margin-top: 5px;
     }
 
     button {
-        padding: 15px 30px; /* Increased padding */
-        font-size: 1.2em; /* Increased font size */
+        padding: 10px 22px;
+        font-size: 1em;
         border: none;
         border-radius: 8px;
         color: white;
         cursor: pointer;
         transition: 0.3s;
-        text-align: center; /* Ensure text is centered */
     }
 
     #assign-button { background-color: #007bff; }
@@ -118,9 +121,9 @@
     }
 
     #add-topic {
-        width: 80%; /* Increased width */
-        padding: 12px; /* Increased padding */
-        font-size: 1.2em; /* Increased font size */
+        width: 70%;
+        padding: 8px;
+        font-size: 1em;
         margin-right: 8px;
         border-radius: 5px;
         border: 1px solid #ccc;
@@ -128,33 +131,30 @@
 
     #add-button {
         background-color: #007bff;
-        padding: 12px 20px; /* Increased padding */
-        font-size: 1.2em; /* Increased font size */
     }
 
     ul {
         list-style: none;
         padding: 0;
         margin-top: 10px;
-        max-height: 200px; /* Increased max-height */
+        max-height: 180px;
         overflow-y: auto;
     }
 
     .topic-item {
         background: #fff;
         border-radius: 5px;
-        padding: 10px 12px; /* Increased padding */
-        margin-bottom: 8px; /* Increased margin */
+        padding: 6px 8px;
+        margin-bottom: 6px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border: 1px solid #ddd;
-        font-size: 1.1em; /* Increased font size */
     }
 
     .topic-item button {
-        padding: 6px 10px; /* Increased padding */
-        font-size: 1em; /* Increased font size */
+        padding: 4px 8px;
+        font-size: 0.9em;
         border-radius: 5px;
     }
 
@@ -165,8 +165,6 @@
         background-color: #6c757d;
         align-self: center;
         margin-top: 15px;
-        padding: 12px 20px; /* Increased padding */
-        font-size: 1.2em; /* Increased font size */
     }
     #close-admin:hover { background-color: #555; }
 
@@ -175,54 +173,57 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        gap: 10px; /* Increased gap */
+        gap: 8px;
         flex-wrap: wrap;
-        margin-bottom: 15px; /* Increased margin */
+        margin-bottom: 10px; /* reduced space */
     }
 
     .timer-set label {
         font-weight: 600;
-        font-size: 1.2em; /* Increased font size */
     }
 
     .timer-set input {
-        width: 70px; /* Increased width */
-        text-align: center; /* Ensure numbers are centered */
-        padding: 8px; /* Increased padding */
+        width: 55px;
+        text-align: center;
+        padding: 4px;
         border-radius: 5px;
         border: 1px solid #555;
-        height: 45px; /* Increased height */
-        font-size: 1.2em; /* Increased font size */
+        height: 35px;
     }
 
     #set-timer {
         background-color: #007bff;
-        height: 45px; /* Increased height */
-        padding: 0 15px; /* Adjusted padding for centering */
-        font-size: 1.2em; /* Increased font size */
-        text-align: center; /* Ensure "Set" is centered */
+        height: 35px;
     }
 
     #timer-display {
         text-align: center;
-        font-size: 3em; /* Increased font size */
+        font-size: 2.5em;
         font-weight: bold;
         color: #000;
-        margin-bottom: 20px; /* Increased margin */
+        margin-bottom: 15px; /* reduced spacing below display */
         box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
         border-radius: 10px;
-        padding: 10px; /* Increased padding */
+        padding: 8px;
     }
 
     #start-timer { background-color: #28a745; }
     #pause-timer { background-color: #ffc107; color: #000; }
     #reset-timer { background-color: #dc3545; }
 
-    /* RESPONSIVE FIX for tablets */
+    /* RESPONSIVE FIX for tablets and phones */
     @media (max-width: 1100px) {
         body { overflow-y: auto; height: auto; }
-        .container { flex-direction: column; height: auto; }
+        .container { flex-direction: column; height: auto; gap: 20px; } /* Added gap for space between boxes in column mode */
         .assigner, .timer { flex: 1 1 100%; height: auto; }
+        .timer-set { flex-wrap: nowrap; justify-content: center; } /* Ensures Min and Sec stay aligned in landscape on tablets/phones */
+    }
+
+    /* Additional responsive fix for smaller screens to prevent title overflow */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 1.5em; /* Further reduce font size on smaller screens to ensure it fits within the box */
+        }
     }
 </style>
 </head>
