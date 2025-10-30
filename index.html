@@ -15,7 +15,6 @@
         align-items: center;
         height: 100vh;
         gap: 30px;
-        font-size: 18px; /* increased base font size for larger UI text */
     }
 
     .container {
@@ -150,37 +149,16 @@
         justify-content: center;
         align-items: center;
         gap: 10px;
-        /* keep the set controls on a single line */
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         margin-bottom: 15px;
     }
-    .timer-set label {
-        margin: 0 4px;
-        white-space: nowrap;
-        font-size: 1rem;
-    }
     .timer-set input {
-        width: 70px;
+        width: 60px;
         text-align: center;
         padding: 5px;
         border-radius: 5px;
         border: 1px solid #555;
-        box-sizing: border-box;
-        height: 44px; /* unified height */
-        font-size: 1rem;
     }
-    /* Make the Set button match input height and sizing */
-    #set-timer {
-        background-color: #007bff;
-        height: 44px;
-        padding: 0 14px;
-        font-size: 1rem;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-    }
-
     #timer-display {
         text-align: center;
         font-size: 3em;
@@ -190,12 +168,10 @@
         box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
     }
 
+    #set-timer {background-color: #007bff;}
     #start-timer { background-color: #28a745; }
     #pause-timer { background-color: #ffc107; color: #000; }
     #reset-timer { background-color: #dc3545; }
-
-    .assigner { flex: 2; }
-    .timer   { flex: 1; }
   
 
 </style>
@@ -203,7 +179,7 @@
 <body>
 <div class="container">
     <!-- IMPROMPTU SPEECH TOPIC ASSIGNER -->
-    <div class="box assigner">
+    <div class="box">
         <div id="main-content">
             <h1>IMPROMPTU SPEECH TOPIC ASSIGNER</h1>
             <p>Click the button to get a random topic for your speech!</p>
@@ -227,7 +203,7 @@
     </div>
 
     <!-- Speech Timer -->
-    <div class="box timer">
+    <div class="box">
         <h2>Speech Timer</h2>
         <div class="timer-set">
             <label>Min:</label>
@@ -235,7 +211,6 @@
             <label>Sec:</label>
             <input type="number" id="timer-seconds" min="0" max="59" value="0">
             <button id="set-timer">⏱️Set</button>
-        </div> <!-- added closing div to ensure proper layout -->
         <div id="timer-display">02:00</div>
         <div class="timer-buttons">
             <button id="start-timer">▶️Start</button>
